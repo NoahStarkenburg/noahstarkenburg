@@ -1,26 +1,112 @@
 @import "tailwindcss";
 
+/*
+  Clean, light, near-monochrome theme.
+  Black/grays with one muted accent used sparingly. No gradients, no grain.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --paper: #ffffff; /* page background */
+  --surface: #f6f6f4; /* cards / chips */
+  --ink: #1c1c1c; /* primary text */
+  --muted: #5b5b5b; /* secondary text */
+  --faint: #8c8c8c; /* labels / tertiary */
+  --line: #e9e9e6; /* subtle borders */
+  --line-strong: #d8d8d4;
+  --accent: #0f766e; /* teal accent (swap this one value to recolor the site) */
+  --accent-soft: #e6f2f0; /* faint teal tint */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/*
+  ---- FLAIR (pazazz) ----
+  All optional polish lives here, gated behind data-flair="on" on <html>.
+  To turn it ALL off and go back to the plain version, change data-flair to
+  "off" in app/layout.tsx (one line). Nothing else needs to change.
+*/
+[data-flair="on"] .eyebrow {
+  color: var(--accent);
+}
+[data-flair="on"] .accent-dot {
+  background: var(--accent);
+}
+[data-flair="on"] .accent-text {
+  color: var(--accent);
+}
+[data-flair="on"] .accent-link {
+  transition: color 0.15s ease;
+}
+[data-flair="on"] .accent-link:hover {
+  color: var(--accent);
+}
+[data-flair="on"] .btn-primary {
+  background: var(--accent);
+}
+[data-flair="on"] .card {
+  border: 1px solid var(--line);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+[data-flair="on"] .card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 14px 30px -16px rgba(0, 0, 0, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  [data-flair="on"] .card:hover {
+    transform: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }
