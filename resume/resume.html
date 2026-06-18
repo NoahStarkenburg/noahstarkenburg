@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Noah Starkenburg — Résumé</title>
+    <style>
+      @page {
+        size: letter;
+        margin: 0.5in;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Calibri, Carlito, "Segoe UI", Arial, sans-serif;
+        font-size: 10pt;
+        line-height: 1.22;
+        color: #000;
+      }
+      h1 {
+        text-align: center;
+        font-size: 22pt;
+        font-weight: 700;
+        margin: 0;
+        letter-spacing: 0.2pt;
+      }
+      .contact {
+        text-align: center;
+        font-size: 9pt;
+        margin: 3pt 0 2pt;
+      }
+      h2 {
+        font-size: 10.5pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6pt;
+        border-bottom: 1px solid #000;
+        padding-bottom: 2pt;
+        margin: 11pt 0 5pt;
+      }
+      p {
+        margin: 0 0 4pt;
+      }
+      .summary {
+        margin: 0;
+      }
+      .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12pt;
+      }
+      .title {
+        font-weight: 700;
+      }
+      .date {
+        font-weight: 400;
+        white-space: nowrap;
+      }
+      .proj-stack {
+        font-style: italic;
+        font-weight: 400;
+      }
+      ul {
+        margin: 3pt 0 7pt;
+        padding-left: 16pt;
+      }
+      li {
+        margin-bottom: 2pt;
+      }
+      .entry {
+        margin-bottom: 2pt;
+      }
+      .skills p {
+        margin: 0 0 3pt;
+      }
+      .cat {
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Noah Starkenburg</h1>
+    <div class="contact">
+      Hoffman Estates, IL &nbsp;&middot;&nbsp; (224) 457-7351 &nbsp;&middot;&nbsp;
+      noahstarkenburg@gmail.com &nbsp;&middot;&nbsp; linkedin.com/in/noah-starkenburg-7babb8332
+      &nbsp;&middot;&nbsp; github.com/NoahStarkenburg
+    </div>
+
+    <h2>Summary</h2>
+    <p class="summary">
+      Software engineer and 2026 B.S. Software Development graduate with experience across two
+      software roles building full-stack web applications, REST APIs, and automation. Comfortable in
+      Java, C#, Python, TypeScript, and SQL, with a focus on clean code, testing, and CI/CD. Seeking
+      a Software Development Engineer role on a team shipping production software.
+    </p>
+
+    <h2>Experience</h2>
+    <div class="entry">
+      <div class="row">
+        <span class="title">Automation Engineer (Intern) | Byline Bank</span>
+        <span class="date">Apr 2026 &ndash; Present</span>
+      </div>
+      <ul>
+        <li>
+          Build automation for IT and other departments on the Microsoft Power Platform (Power
+          Automate, Copilot Studio) with PowerShell integrations.
+        </li>
+        <li>
+          Automated Active Directory account-lockout response with a PowerShell service and Power
+          Automate flow that notifies users by email and Teams and alerts the help desk, including
+          mass-lockout detection when 5 or more users lock out within 4 hours; saves an estimated
+          $20K per year.
+        </li>
+        <li>
+          Built SharePoint change monitoring for external-collaboration sites using PowerShell
+          webhooks that post to Power Automate and notify the site owner on any change.
+        </li>
+        <li>
+          Built a Copilot Studio assistant over SharePoint knowledge sources that answers employee
+          questions and opens Freshservice IT tickets from chat.
+        </li>
+      </ul>
+    </div>
+    <div class="entry">
+      <div class="row">
+        <span class="title">Software Developer | FamilyCore</span>
+        <span class="date">Sep 2025 &ndash; Apr 2026</span>
+      </div>
+      <ul>
+        <li>
+          Built a REST API layer in ASP.NET Core with request validation, structured logging,
+          correlation IDs, and policy-based authorization.
+        </li>
+        <li>
+          Designed a multi-schema PostgreSQL data layer with Entity Framework Core, including
+          document ingestion, OCR, and search.
+        </li>
+        <li>
+          Containerized the full stack with Docker Compose (ASP.NET Core, PostgreSQL, object
+          storage).
+        </li>
+        <li>
+          Implemented Hangfire background jobs for async processing with automatic retries and
+          status tracking.
+        </li>
+        <li>
+          Wrote integration tests with xUnit, Testcontainers, and Moq with per-test data isolation,
+          and built an evaluation suite to catch regressions.
+        </li>
+      </ul>
+    </div>
+
+    <h2>Education</h2>
+    <div class="row">
+      <span class="title">Grand Canyon University | B.S. Software Development</span>
+      <span class="date">Graduated April 2026</span>
+    </div>
+
+    <h2>Projects</h2>
+    <div class="entry">
+      <div class="row">
+        <span class="title"
+          >KnowledgeMarket | Full-Stack Course Marketplace
+          <span class="proj-stack">&mdash; ASP.NET Core, React, PostgreSQL, Stripe, Docker</span>
+        </span>
+      </div>
+      <ul>
+        <li>
+          Built a full-stack marketplace with a React 19 SPA and an ASP.NET Core API serving 40+
+          endpoints across auth, catalog, orders, content, reviews, and admin.
+        </li>
+        <li>
+          Integrated Stripe for payments with webhook-driven order fulfillment and automatic retry
+          on failed charges.
+        </li>
+        <li>
+          Designed a multi-schema PostgreSQL layer with EF Core and full-text search; JWT auth with
+          HttpOnly cookies and CSRF protection.
+        </li>
+      </ul>
+    </div>
+    <div class="entry">
+      <div class="row">
+        <span class="title"
+          >Pulse Chat | Real-Time Chat System
+          <span class="proj-stack">&mdash; Go, WebSockets, Redis, RabbitMQ, PostgreSQL, Docker</span>
+        </span>
+      </div>
+      <ul>
+        <li>
+          Built a horizontally-scalable, multi-room chat system in Go with WebSocket transport,
+          Redis Pub/Sub fan-out, RabbitMQ durable workers, PostgreSQL message history, and Prometheus
+          metrics, containerized for scaling.
+        </li>
+      </ul>
+    </div>
+
+    <h2>Technical Skills</h2>
+    <div class="skills">
+      <p><span class="cat">Languages:</span> Java, C#, Python, TypeScript, JavaScript, SQL, Go</p>
+      <p>
+        <span class="cat">Backend:</span> ASP.NET Core, Entity Framework Core, REST APIs, Spring
+        Boot, Node.js / Express, JWT Auth
+      </p>
+      <p><span class="cat">Frontend:</span> React, Next.js, TypeScript, HTML/CSS</p>
+      <p><span class="cat">Databases:</span> PostgreSQL, SQL Server, MySQL, MongoDB, Redis</p>
+      <p>
+        <span class="cat">DevOps &amp; Cloud:</span> Docker, Docker Compose, Kubernetes, CI/CD,
+        GitHub Actions, AWS (S3, RDS, ECS), Google Cloud (GCP), Nginx
+      </p>
+      <p>
+        <span class="cat">Testing &amp; Practices:</span> xUnit, Testcontainers, Integration Testing,
+        Agile / Scrum, Git, Postman, Swagger/OpenAPI
+      </p>
+    </div>
+  </body>
+</html>
