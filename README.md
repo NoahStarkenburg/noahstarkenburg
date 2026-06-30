@@ -1,41 +1,23 @@
-# noahstarkenburg.dev
+# Noah Starkenburg
 
-My personal portfolio — a fast, statically-rendered site showcasing my work as a
-full-stack & applied-AI engineer.
+Software developer in the Chicago area, mostly in C# and .NET. I build full-stack web apps and backend services, and I'm picking up Go on the side. Currently an automation engineer at Byline Bank, with a 2026 B.S. in Software Development from Grand Canyon University.
 
-**Live:** _coming soon_ → deploying to Vercel at `noahstarkenburg.dev`
+![C#](https://img.shields.io/badge/C%23-512BD4?style=flat-square&logo=csharp&logoColor=white)
+![.NET](https://img.shields.io/badge/.NET-512BD4?style=flat-square&logo=dotnet&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
+![Go](https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
 
-## Stack
+## Projects
 
-- **Next.js 16** (App Router, React Server Components, React Compiler)
-- **React 19** + **TypeScript**
-- **Tailwind CSS v4**
-- **Motion** for animation
-- Statically prerendered · deployed on **Vercel**
+**[KnowledgeMarket](https://github.com/NoahStarkenburg/KnowledgeMarket)** is a full-stack course marketplace: a .NET 9 API with a React 19 front end, Stripe payments via webhooks, JWT auth in HttpOnly cookies with CSRF protection, Postgres full-text search, and S3-compatible storage. Tested with xUnit, Vitest, and Playwright.
 
-## Editing content
+**[pulse-chat](https://github.com/NoahStarkenburg/pulse-chat)** is a multi-room chat system in Go, built to learn distributed systems hands-on. WebSockets, session auth, and Postgres message history work today; Redis Pub/Sub scaling is next.
 
-All copy lives in one place — **`lib/content.ts`**. Change your bio, projects,
-experience, and skills there; the components read from it. Search that file for
-`TODO` to find the spots that need real details (automation-job specifics,
-metrics, LinkedIn URL, résumé PDF).
+**[noahstarkenburg.dev](https://github.com/NoahStarkenburg/noahstarkenburg)** is my personal site, built with Next.js and Tailwind.
 
-Drop your résumé at `public/Noah-Starkenburg-Resume.pdf` (filename is set in
-`lib/content.ts`).
+## Reach me
 
-## Local development
-
-```bash
-npm install
-npm run dev      # http://localhost:3000
-npm run build    # production build
-```
-
-## Deploy
-
-```bash
-npx vercel        # preview
-npx vercel --prod # production
-```
-
-Then point the `noahstarkenburg.dev` domain at the Vercel project.
+[Website](https://noahstarkenburg.dev) · [LinkedIn](https://www.linkedin.com/in/noah-starkenburg-7babb8332) · noahstarkenburg@gmail.com
