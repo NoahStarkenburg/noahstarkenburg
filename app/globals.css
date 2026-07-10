@@ -14,6 +14,25 @@
   --line-strong: #d8d8d4;
   --accent: #0f766e; /* teal accent (swap this one value to recolor the site) */
   --accent-soft: #e6f2f0; /* faint teal tint */
+  --accent-glow: rgba(15, 118, 110, 0.14); /* hero ambient glow */
+  --accent-ring: rgba(15, 118, 110, 0.5); /* pulsing "open" indicator */
+}
+
+/* Dark theme — same monochrome+teal system, inverted. A lighter teal keeps
+   the accent readable on a dark background. Applied via data-theme on <html>,
+   set before paint by the inline script in app/layout.tsx. */
+:root[data-theme="dark"] {
+  --paper: #0d0d0f;
+  --surface: #17171a;
+  --ink: #f3f3f1;
+  --muted: #a1a1a6;
+  --faint: #6f6f76;
+  --line: #262629;
+  --line-strong: #35353b;
+  --accent: #2dd4bf;
+  --accent-soft: #0f2b28;
+  --accent-glow: rgba(45, 212, 191, 0.18);
+  --accent-ring: rgba(45, 212, 191, 0.5);
 }
 
 @theme inline {
@@ -59,6 +78,18 @@ body {
   border-radius: 2px;
 }
 
+/* Theme toggle: show the icon for the theme you'd switch TO.
+   Light -> moon (go dark). Dark -> sun (go light). Pure CSS, no JS state. */
+.theme-toggle .sun {
+  display: none;
+}
+:root[data-theme="dark"] .theme-toggle .moon {
+  display: none;
+}
+:root[data-theme="dark"] .theme-toggle .sun {
+  display: block;
+}
+
 /*
   ---- FLAIR (pazazz) ----
   All optional polish lives here, gated behind data-flair="on" on <html>.
@@ -67,6 +98,44 @@ body {
 */
 [data-flair="on"] .eyebrow {
   color: var(--accent);
+}
+/* Pulsing "open to roles" indicator. Uses an rgba var, not color-mix, which
+   Lightning CSS (Tailwind v4) silently drops. The hero glow/grid are applied
+   as inline styles in hero.tsx for the same reason. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-flair="on"] .accent-dot {
+    animation: open-pulse 2.6s ease-in-out infinite;
+  }
+}
+@keyframes open-pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--accent-ring);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 7px transparent;
+  }
+}
+
+/* Infinite tech marquee. Track is duplicated 2x, so -50% loops seamlessly. */
+.marquee-track {
+  animation: marquee 42s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
 }
 [data-flair="on"] .accent-dot {
   background: var(--accent);
