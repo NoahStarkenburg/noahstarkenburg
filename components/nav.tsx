@@ -2,16 +2,36 @@
 
 import { useEffect, useState } from "react";
 import { nav, profile } from "@/lib/content";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const sections = nav
+      .map((n) => document.getElementById(n.href.slice(1)))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        }
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -32,26 +52,41 @@ export function Nav() {
           {profile.name}
         </a>
 
-        <ul className="hidden items-center gap-8 md:flex">
-          {nav.map((item) => (
-            <li key={item.href}>
-              <a
-                href={item.href}
-                className="accent-link text-sm text-muted transition-colors hover:text-ink"
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="flex items-center gap-2 md:gap-6">
+          <ul className="hidden items-center gap-8 md:flex">
+            {nav.map((item) => {
+              const isActive = active === item.href.slice(1);
+              return (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    aria-current={isActive ? "true" : undefined}
+                    className={`accent-link inline-flex items-center gap-2 text-sm transition-colors hover:text-ink ${
+                      isActive ? "text-ink" : "text-muted"
+                    }`}
+                  >
+                    <span
+                      className={`h-1 w-1 rounded-full bg-accent transition-opacity ${
+                        isActive ? "opacity-100" : "opacity-0"
+                      }`}
+                      aria-hidden
+                    />
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="relative z-50 flex h-9 w-9 items-center justify-center md:hidden"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-        >
+          <ThemeToggle />
+
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="relative z-50 flex h-9 w-9 items-center justify-center md:hidden"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+          >
           <span className="flex flex-col gap-1.5">
             <span
               className={`block h-0.5 w-6 bg-ink transition-transform duration-200 ${
@@ -64,7 +99,8 @@ export function Nav() {
               }`}
             />
           </span>
-        </button>
+          </button>
+        </div>
       </nav>
 
       <div

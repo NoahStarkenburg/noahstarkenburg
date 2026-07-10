@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Noah Starkenburg — Résumé</title>
+    <title>Noah Starkenburg Résumé</title>
     <style>
       @page {
         size: letter;
@@ -167,7 +167,7 @@
       <div class="row">
         <span class="title"
           >KnowledgeMarket | Full-Stack Course Marketplace
-          <span class="proj-stack">&mdash; ASP.NET Core, React, PostgreSQL, Stripe, Docker</span>
+          <span class="proj-stack">(ASP.NET Core, React, PostgreSQL, Stripe, Docker)</span>
         </span>
       </div>
       <ul>
@@ -188,15 +188,24 @@
     <div class="entry">
       <div class="row">
         <span class="title"
-          >Pulse Chat | Real-Time Chat System
-          <span class="proj-stack">&mdash; Go, WebSockets, Redis, RabbitMQ, PostgreSQL, Docker</span>
+          >Inbound | AI Job-Application Copilot (in progress)
+          <span class="proj-stack">(Next.js, TypeScript, Go, Playwright, PostgreSQL/pgvector, Redis, LLM APIs)</span>
         </span>
       </div>
       <ul>
         <li>
-          Built a horizontally-scalable, multi-room chat system in Go with WebSocket transport,
-          Redis Pub/Sub fan-out, RabbitMQ durable workers, PostgreSQL message history, and Prometheus
-          metrics, containerized for scaling.
+          Building a job-search platform that ingests postings from multiple public job-board APIs
+          and ranks them against a user's resume with a hybrid score combining vector similarity
+          (pgvector) and structured signals, with a short explanation for each match.
+        </li>
+        <li>
+          Built an AI browser agent (Playwright with an LLM) that reads a job's application form,
+          maps the user's resume and profile onto the fields, fills it, and pauses for human review
+          before anything is submitted.
+        </li>
+        <li>
+          Designed as a polyglot system: a Next.js and TypeScript frontend and API, a Go pipeline for
+          scheduled ingestion and a queued worker pool, and a Node and Playwright agent worker.
         </li>
       </ul>
     </div>

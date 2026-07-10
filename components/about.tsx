@@ -1,6 +1,7 @@
-import { about } from "@/lib/content";
+import { about, profile } from "@/lib/content";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
+import { Avatar } from "@/components/avatar";
 
 const currently = [
   "Automating workflows at Byline Bank",
@@ -31,7 +32,13 @@ export function About() {
         </div>
 
         <Reveal delay={0.1} className="md:col-span-1">
-          <p className="eyebrow text-xs font-semibold uppercase tracking-[0.12em] text-faint">Currently</p>
+          <Avatar
+            src={profile.photo}
+            name={profile.name}
+            imgSizes="144px"
+            className="h-36 w-36 rounded-2xl border border-line-strong text-3xl font-semibold"
+          />
+          <p className="eyebrow mt-8 text-xs font-semibold uppercase tracking-[0.12em] text-faint">Currently</p>
           <ul className="mt-3 space-y-3">
             {currently.map((c) => (
               <li key={c} className="text-sm leading-relaxed text-muted">

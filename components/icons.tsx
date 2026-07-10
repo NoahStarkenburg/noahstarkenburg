@@ -17,3 +17,97 @@ export function LinkedIn(props: IconProps) {
     </svg>
   );
 }
+
+export function Sun(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+      {...props}
+    >
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+    </svg>
+  );
+}
+
+export function Moon(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+      {...props}
+    >
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" />
+    </svg>
+  );
+}
+
+function Stroke({ children, ...props }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+      {...props}
+    >
+      {children}
+    </svg>
+  );
+}
+
+export function X(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="M18 6 6 18M6 6l12 12" />
+    </Stroke>
+  );
+}
+
+export function ChevronLeft(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="m15 18-6-6 6-6" />
+    </Stroke>
+  );
+}
+
+export function ChevronRight(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="m9 18 6-6-6-6" />
+    </Stroke>
+  );
+}
+
+export function Gallery(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <circle cx="9" cy="9" r="1.6" />
+      <path d="m21 15-5-5L5 21" />
+    </Stroke>
+  );
+}
+
+export function Maximize(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M16 21h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
+    </Stroke>
+  );
+}
