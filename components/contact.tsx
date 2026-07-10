@@ -1,27 +1,34 @@
 import { profile } from "@/lib/content";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
+import { CopyEmail } from "@/components/copy-email";
 import { GitHub, LinkedIn } from "@/components/icons";
 
 export function Contact() {
   return (
-    <section id="contact" className="mx-auto max-w-5xl px-6 py-20 md:px-8 md:py-28">
-      <SectionHeading label="Contact" title="Get in touch" />
+    <section id="contact" className="relative isolate overflow-hidden">
+      {/* Ambient glow that bookends the hero at the bottom of the page. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "radial-gradient(45% 55% at 30% 90%, var(--accent-glow), transparent 72%)",
+        }}
+      />
 
-      <Reveal>
-        <p className="max-w-2xl leading-relaxed text-muted">
-          I&apos;m looking for a software engineering or developer role on a team building real
-          products. If your team is hiring, or you just want to talk shop, my inbox is open.
-        </p>
+      <div className="relative z-10 mx-auto max-w-5xl px-6 py-20 md:px-8 md:py-28">
+        <SectionHeading label="Contact" title="Get in touch" />
 
-        <a
-          href={profile.socials.email}
-          className="accent-link mt-6 inline-block break-words text-2xl font-semibold text-ink underline decoration-line-strong underline-offset-[6px] transition-colors hover:decoration-ink sm:text-3xl"
-        >
-          {profile.email}
-        </a>
+        <Reveal>
+          <p className="max-w-2xl leading-relaxed text-muted">
+            I&apos;m looking for a software engineering or developer role on a team building real
+            products. If your team is hiring, or you just want to talk shop, my inbox is open.
+          </p>
 
-        <div className="mt-8 flex flex-wrap items-center gap-6">
+          <CopyEmail />
+
+          <div className="mt-8 flex flex-wrap items-center gap-6">
           <a
             href={profile.socials.github}
             target="_blank"
@@ -40,14 +47,15 @@ export function Contact() {
             <LinkedIn className="h-4 w-4" />
             LinkedIn
           </a>
-          <a
-            href={profile.resume}
-            className="accent-link text-sm font-medium text-muted transition-colors hover:text-ink"
-          >
-            Résumé
-          </a>
-        </div>
-      </Reveal>
+            <a
+              href={profile.resume}
+              className="accent-link text-sm font-medium text-muted transition-colors hover:text-ink"
+            >
+              Resume
+            </a>
+          </div>
+        </Reveal>
+      </div>
     </section>
   );
 }

@@ -19,6 +19,10 @@ const mono = IBM_Plex_Mono({
 
 const title = `${profile.name} | ${profile.role}`;
 
+// Runs synchronously in <head> before first paint: applies the saved theme,
+// or falls back to the OS preference. Prevents a flash of the wrong theme.
+const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(!t){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`;
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://noahstarkenburg.dev"),
   title: {
@@ -59,8 +63,13 @@ export default function RootLayout({
     <html
       lang="en"
       data-flair="on"
+      data-theme="light"
+      suppressHydrationWarning
       className={`${sans.variable} ${mono.variable} antialiased`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="min-h-screen bg-paper text-ink">
         <a
           href="#main"

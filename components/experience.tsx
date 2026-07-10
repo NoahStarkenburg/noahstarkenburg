@@ -1,6 +1,7 @@
 import { experience } from "@/lib/content";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
+import { Avatar } from "@/components/avatar";
 
 export function Experience() {
   return (
@@ -10,9 +11,15 @@ export function Experience() {
       <div className="space-y-14">
         {experience.map((job) => (
           <Reveal key={job.company} as="article">
-            <div className="grid gap-2 md:grid-cols-4 md:gap-8">
+            <div className="grid gap-4 md:grid-cols-4 md:gap-8">
               <div className="md:col-span-1">
                 <p className="text-sm text-muted">{job.period}</p>
+                <Avatar
+                  src={job.logo}
+                  name={job.company}
+                  imgSizes="128px"
+                  className="mt-4 h-32 w-32 rounded-2xl border border-line-strong text-2xl font-semibold"
+                />
               </div>
 
               <div className="md:col-span-3">
