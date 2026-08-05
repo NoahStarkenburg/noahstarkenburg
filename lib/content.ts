@@ -41,6 +41,7 @@ export const facts: { label: string; value: string }[] = [
  * Add an `href` (a PR, repo, or write-up) to make a pill a link.
  */
 export const highlights: { label: string; href?: string }[] = [
+  { label: "AWS Certified Cloud Practitioner" },
   { label: "3rd place · AWS Cloudathon" },
   // 🔴 TODO: add the Kong repo or your PR URL to make this clickable.
   { label: "Open-source contributor · Kong (3.1k★ Go)" },
@@ -56,6 +57,7 @@ export const marquee: string[] = [
   "Go",
   "TypeScript",
   "React",
+  "Angular",
   "Next.js",
   "PostgreSQL",
   "Redis",
@@ -63,6 +65,7 @@ export const marquee: string[] = [
   "Kubernetes",
   "GitHub Actions",
   "AWS",
+  "Azure",
   "RabbitMQ",
   "gRPC",
   "Entity Framework Core",
@@ -165,19 +168,19 @@ export const projects: Project[] = [
     title: "KnowledgeMarket",
     tagline: "Full-stack course marketplace",
     description:
-      "A full-stack course marketplace where instructors publish paid courses and learners buy and access them. A React 19 single-page app on an ASP.NET Core API with 70+ endpoints, Stripe payments with webhook-driven fulfillment, JWT auth in HttpOnly cookies with CSRF protection, full-text search, and a Dockerized CI/CD pipeline.",
+      "A full-stack course marketplace where instructors publish paid courses and learners buy and access them. An Angular single-page app on an ASP.NET Core API with 70+ endpoints, Stripe payments with webhook-driven fulfillment, JWT auth in HttpOnly cookies with CSRF protection, full-text search, and a Dockerized CI/CD pipeline. Currently being deployed to Azure for a live demo.",
     status: "Shipped",
     year: "2025",
     featured: true,
     stack: [
       "ASP.NET Core",
-      "React 19",
+      "Angular",
       "TypeScript",
       "PostgreSQL",
       "Stripe",
       "JWT",
       "Docker",
-      "GitHub Actions",
+      "Azure",
     ],
     links: [
       // Deploying it? Add the URL here and a "Live demo" button appears automatically:
@@ -255,7 +258,7 @@ export const skills: SkillGroup[] = [
   },
   {
     label: "Frontend",
-    items: ["React", "Next.js", "TypeScript", "HTML / CSS"],
+    items: ["React", "Angular", "Next.js", "TypeScript", "HTML / CSS"],
   },
   {
     label: "Databases",
@@ -268,6 +271,7 @@ export const skills: SkillGroup[] = [
       "GitHub Actions",
       "CI/CD",
       "AWS (S3, RDS, ECS)",
+      "Azure",
       "Google Cloud (GCP)",
       "Kubernetes",
       "RabbitMQ",
