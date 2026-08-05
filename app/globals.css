@@ -1,52 +1,58 @@
 @import "tailwindcss";
 
 /*
-  Clean, light, near-monochrome theme.
-  Black/grays with one muted accent used sparingly. No gradients, no grain.
+  "Engineered document" theme.
+  Warm near-white paper, near-black ink, one restrained cobalt accent used only
+  in hairlines, section indices, and micro-indicators. No gradients, no grain.
+  Type does the heavy lifting: Bricolage (display) + Hanken (body) + JetBrains (mono).
 */
 :root {
-  --paper: #ffffff; /* page background */
-  --surface: #f6f6f4; /* cards / chips */
-  --ink: #1c1c1c; /* primary text */
-  --muted: #5b5b5b; /* secondary text */
-  --faint: #8c8c8c; /* labels / tertiary */
-  --line: #e9e9e6; /* subtle borders */
-  --line-strong: #d8d8d4;
-  --accent: #0f766e; /* teal accent (swap this one value to recolor the site) */
-  --accent-soft: #e6f2f0; /* faint teal tint */
-  --accent-glow: rgba(15, 118, 110, 0.14); /* hero ambient glow */
-  --accent-ring: rgba(15, 118, 110, 0.5); /* pulsing "open" indicator */
+  --paper: #fbfaf8; /* warm page background */
+  --surface: #f2f0ea; /* cards */
+  --surface-2: #ffffff; /* inner chips / wells */
+  --ink: #17171b; /* primary text */
+  --muted: #565660; /* secondary text */
+  --faint: #8b8b93; /* labels / metadata */
+  --line: #e7e4dc; /* subtle hairlines */
+  --line-strong: #d6d2c8;
+  --accent: #2a43d4; /* cobalt — the one accent (swap to recolor) */
+  --accent-soft: #e9ecfb;
+  --accent-glow: rgba(42, 67, 212, 0.12);
+  --accent-ring: rgba(42, 67, 212, 0.45);
+  --radius: 10px;
 }
 
-/* Dark theme — same monochrome+teal system, inverted. A lighter teal keeps
-   the accent readable on a dark background. Applied via data-theme on <html>,
-   set before paint by the inline script in app/layout.tsx. */
+/* Dark theme — same system inverted. Warm off-white ink, periwinkle accent. */
 :root[data-theme="dark"] {
-  --paper: #0d0d0f;
-  --surface: #17171a;
-  --ink: #f3f3f1;
-  --muted: #a1a1a6;
-  --faint: #6f6f76;
-  --line: #262629;
-  --line-strong: #35353b;
-  --accent: #2dd4bf;
-  --accent-soft: #0f2b28;
-  --accent-glow: rgba(45, 212, 191, 0.18);
-  --accent-ring: rgba(45, 212, 191, 0.5);
+  --paper: #0e0e11;
+  --surface: #17171b;
+  --surface-2: #202026;
+  --ink: #f3f1ea;
+  --muted: #a2a2aa;
+  --faint: #6c6c75;
+  --line: #242429;
+  --line-strong: #34343b;
+  --accent: #94a6ff;
+  --accent-soft: #1a1e3a;
+  --accent-glow: rgba(148, 166, 255, 0.16);
+  --accent-ring: rgba(148, 166, 255, 0.45);
 }
 
 @theme inline {
   --color-paper: var(--paper);
   --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-faint: var(--faint);
   --color-line: var(--line);
   --color-line-strong: var(--line-strong);
   --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
 
-  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
 }
 
 * {
@@ -55,7 +61,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  scroll-padding-top: 5.5rem;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -65,6 +71,12 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3.display {
+  font-family: var(--font-display);
 }
 
 ::selection {
@@ -78,48 +90,52 @@ body {
   border-radius: 2px;
 }
 
-/* Theme toggle: show the icon for the theme you'd switch TO.
-   Light -> moon (go dark). Dark -> sun (go light). Pure CSS, no JS state. */
-.theme-toggle .sun {
-  display: none;
-}
-:root[data-theme="dark"] .theme-toggle .moon {
-  display: none;
-}
-:root[data-theme="dark"] .theme-toggle .sun {
-  display: block;
+/* ---- Reusable pieces ---------------------------------------------------- */
+
+/* Mono metadata label used for eyebrows, indices, statuses. */
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--faint);
 }
 
-/*
-  ---- FLAIR (pazazz) ----
-  All optional polish lives here, gated behind data-flair="on" on <html>.
-  To turn it ALL off and go back to the plain version, change data-flair to
-  "off" in app/layout.tsx (one line). Nothing else needs to change.
-*/
-[data-flair="on"] .eyebrow {
-  color: var(--accent);
-}
-/* Pulsing "open to roles" indicator. Uses an rgba var, not color-mix, which
-   Lightning CSS (Tailwind v4) silently drops. The hero glow/grid are applied
-   as inline styles in hero.tsx for the same reason. */
-@media (prefers-reduced-motion: no-preference) {
-  [data-flair="on"] .accent-dot {
-    animation: open-pulse 2.6s ease-in-out infinite;
-  }
-}
-@keyframes open-pulse {
-  0% {
-    box-shadow: 0 0 0 0 var(--accent-ring);
-  }
-  70%,
-  100% {
-    box-shadow: 0 0 0 7px transparent;
-  }
+/* Spec-sheet chip: hairline outline, monospace, no fill. */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1;
+  color: var(--muted);
+  border: 1px solid var(--line-strong);
+  border-radius: 5px;
+  padding: 0.34rem 0.5rem;
+  white-space: nowrap;
 }
 
-/* Infinite tech marquee. Track is duplicated 2x, so -50% loops seamlessly. */
+/* Data-sheet card. */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+/* Blinking terminal cursor for the hero status line. */
+.cursor {
+  display: inline-block;
+  width: 0.55ch;
+  height: 1em;
+  background: var(--accent);
+  margin-left: 0.1em;
+  vertical-align: -0.1em;
+}
+
+/* ---- Marquee ------------------------------------------------------------ */
+/* Seamless loop: the track is duplicated, so -50% repeats without a seam. */
 .marquee-track {
-  animation: marquee 42s linear infinite;
+  animation: marquee 46s linear infinite;
 }
 .marquee:hover .marquee-track {
   animation-play-state: paused;
@@ -132,14 +148,25 @@ body {
     transform: translateX(-50%);
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
+
+/* Theme toggle: show the icon for the theme you'd switch TO. Pure CSS. */
+.theme-toggle .sun {
+  display: none;
 }
-[data-flair="on"] .accent-dot {
-  background: var(--accent);
+:root[data-theme="dark"] .theme-toggle .moon {
+  display: none;
 }
+:root[data-theme="dark"] .theme-toggle .sun {
+  display: block;
+}
+
+/*
+  ---- FLAIR (pazazz) ----
+  Optional polish, gated behind data-flair="on" on <html>. Flip to "off" in
+  app/layout.tsx to fall back to a fully plain version. The accent stays
+  disciplined on purpose: indices, hairlines, and indicators only — never the
+  primary buttons (they stay ink), so the page never reads "colorful".
+*/
 [data-flair="on"] .accent-text {
   color: var(--accent);
 }
@@ -149,27 +176,53 @@ body {
 [data-flair="on"] .accent-link:hover {
   color: var(--accent);
 }
-[data-flair="on"] .btn-primary {
+[data-flair="on"] .accent-dot {
   background: var(--accent);
 }
-[data-flair="on"] .card {
-  border: 1px solid var(--line);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease;
+@media (prefers-reduced-motion: no-preference) {
+  [data-flair="on"] .accent-dot {
+    animation: open-pulse 2.6s ease-in-out infinite;
+  }
+  [data-flair="on"] .cursor {
+    animation: blink 1.15s steps(1) infinite;
+  }
 }
-[data-flair="on"] .card:hover {
-  transform: translateY(-3px);
-  border-color: var(--accent);
-  box-shadow: 0 14px 30px -16px rgba(0, 0, 0, 0.22);
+@keyframes open-pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--accent-ring);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 7px transparent;
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
 
+[data-flair="on"] .card {
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+[data-flair="on"] .card-hover:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 18px 44px -26px rgba(20, 20, 30, 0.4);
+}
+
+/* ---- Reduced motion ----------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  [data-flair="on"] .card:hover {
+  .marquee-track {
+    animation: none;
+  }
+  [data-flair="on"] .card-hover:hover {
     transform: none;
   }
   *,

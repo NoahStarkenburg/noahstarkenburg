@@ -1,19 +1,26 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import { profile } from "@/lib/content";
 import "./globals.css";
 
-const sans = IBM_Plex_Sans({
+const display = Bricolage_Grotesque({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-plex-sans",
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-bricolage",
   display: "swap",
 });
 
-const mono = IBM_Plex_Mono({
+const sans = Hanken_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-plex-mono",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-hanken",
+  display: "swap",
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-jetbrains",
   display: "swap",
 });
 
@@ -65,7 +72,7 @@ export default function RootLayout({
       data-flair="on"
       data-theme="light"
       suppressHydrationWarning
-      className={`${sans.variable} ${mono.variable} antialiased`}
+      className={`${display.variable} ${sans.variable} ${mono.variable} antialiased`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />

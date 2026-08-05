@@ -94,6 +94,22 @@ export function ChevronRight(props: IconProps) {
   );
 }
 
+export function ArrowUp(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="M12 19V5M5 12l7-7 7 7" />
+    </Stroke>
+  );
+}
+
+export function ArrowUpRight(props: IconProps) {
+  return (
+    <Stroke {...props}>
+      <path d="M7 17 17 7M8 7h9v9" />
+    </Stroke>
+  );
+}
+
 export function Gallery(props: IconProps) {
   return (
     <Stroke {...props}>

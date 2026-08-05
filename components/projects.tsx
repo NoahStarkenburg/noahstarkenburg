@@ -4,7 +4,7 @@ import { useState } from "react";
 import { projects, type Project } from "@/lib/content";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
-import { Gallery, GitHub } from "@/components/icons";
+import { ArrowUpRight, Gallery, GitHub } from "@/components/icons";
 import { ProjectModal } from "@/components/project-modal";
 
 type Link = Project["links"][number];
@@ -29,7 +29,7 @@ function ProjectLinks({ links }: { links: Link[] }) {
               className="btn-primary inline-flex items-center gap-1.5 rounded-md bg-ink px-4 py-2 text-sm font-medium text-paper transition-opacity hover:opacity-90"
             >
               {l.label}
-              <span aria-hidden>&rarr;</span>
+              <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
             </a>
           );
         }
@@ -54,7 +54,7 @@ function Stack({ items }: { items: string[] }) {
   return (
     <ul className="mt-5 flex flex-wrap gap-1.5">
       {items.map((s) => (
-        <li key={s} className="rounded bg-paper px-2 py-0.5 text-xs text-muted">
+        <li key={s} className="chip">
           {s}
         </li>
       ))}
@@ -64,7 +64,7 @@ function Stack({ items }: { items: string[] }) {
 
 function GalleryHint({ count }: { count: number }) {
   return (
-    <span className="accent-text inline-flex items-center gap-1.5 text-xs font-medium text-faint">
+    <span className="accent-text label inline-flex items-center gap-1.5 !tracking-[0.08em]">
       <Gallery className="h-3.5 w-3.5" />
       {count} screenshot{count > 1 ? "s" : ""}
     </span>
@@ -109,7 +109,7 @@ export function Projects() {
 
   return (
     <section id="projects" className="mx-auto max-w-5xl px-6 py-20 md:px-8 md:py-28">
-      <SectionHeading label="Projects" title="Things I've built" />
+      <SectionHeading index="03" label="Projects" title="Things I've built" note="selected work" />
 
       <div className="space-y-5">
         {featured.map((p) => {
@@ -117,23 +117,26 @@ export function Projects() {
           return (
             <Reveal key={p.title} as="article">
               <div
-                className={`card relative rounded-lg bg-surface p-6 md:p-8 ${
+                className={`card card-hover relative p-6 md:p-8 ${
                   count > 0 ? "cursor-pointer" : ""
                 }`}
               >
                 {count > 0 && <OpenButton title={p.title} onOpen={() => setActive(p)} />}
-                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <div className="flex items-center gap-3">
-                    <h3 className="text-xl font-semibold text-ink">{p.title}</h3>
-                    <span className="accent-text rounded bg-paper px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-faint">
-                      Featured
-                    </span>
+                <div className="flex items-start justify-between gap-4 border-b border-line pb-4">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2.5">
+                      <h3 className="display text-2xl font-bold text-ink">{p.title}</h3>
+                      <span className="accent-text label inline-flex items-center gap-1.5">
+                        <span className="h-1 w-1 rounded-full bg-accent" aria-hidden />
+                        Featured
+                      </span>
+                    </div>
+                    <p className="mt-1.5 text-sm text-muted">{p.tagline}</p>
                   </div>
-                  <span className="shrink-0 text-xs text-faint">
+                  <span className="label shrink-0 whitespace-nowrap">
                     {p.status} · {p.year}
                   </span>
                 </div>
-                <p className="mt-1 text-sm text-muted">{p.tagline}</p>
                 <p className="mt-4 max-w-3xl leading-relaxed text-muted">{p.description}</p>
                 <Stack items={p.stack} />
                 <Footer count={count} links={p.links} className="mt-6" />
@@ -148,19 +151,17 @@ export function Projects() {
             return (
               <Reveal key={p.title} delay={(i % 3) * 0.06} as="article">
                 <div
-                  className={`card relative flex h-full flex-col rounded-lg bg-surface p-6 md:p-7 ${
+                  className={`card card-hover relative flex h-full flex-col p-6 md:p-7 ${
                     count > 0 ? "cursor-pointer" : ""
                   }`}
                 >
                   {count > 0 && <OpenButton title={p.title} onOpen={() => setActive(p)} />}
-                  <div className="flex items-baseline justify-between gap-4">
-                    <h3 className="text-lg font-semibold text-ink">{p.title}</h3>
-                    <span className="shrink-0 text-xs text-faint">
-                      {p.status} · {p.year}
-                    </span>
+                  <div className="flex items-start justify-between gap-3 border-b border-line pb-3.5">
+                    <h3 className="display text-lg font-bold text-ink">{p.title}</h3>
+                    <span className="label shrink-0 whitespace-nowrap">{p.status}</span>
                   </div>
-                  <p className="mt-0.5 text-sm text-muted">{p.tagline}</p>
-                  <p className="mt-4 text-sm leading-relaxed text-muted">{p.description}</p>
+                  <p className="mt-3 text-sm text-muted">{p.tagline}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">{p.description}</p>
                   <Stack items={p.stack} />
                   <Footer count={count} links={p.links} className="mt-auto pt-6" />
                 </div>

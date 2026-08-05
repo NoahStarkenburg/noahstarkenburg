@@ -48,8 +48,11 @@ export function Nav() {
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6 md:px-8">
-        <a href="#main" className="text-base font-semibold tracking-tight text-ink">
-          {profile.name}
+        <a href="#main" className="inline-flex items-baseline gap-2">
+          <span className="text-base font-bold tracking-tight text-ink">{profile.name}</span>
+          <span className="hidden font-mono text-[10px] uppercase tracking-[0.16em] text-faint sm:inline">
+            SWE
+          </span>
         </a>
 
         <div className="flex items-center gap-2 md:gap-6">
@@ -61,7 +64,7 @@ export function Nav() {
                   <a
                     href={item.href}
                     aria-current={isActive ? "true" : undefined}
-                    className={`accent-link inline-flex items-center gap-2 text-sm transition-colors hover:text-ink ${
+                    className={`accent-link inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.12em] transition-colors hover:text-ink ${
                       isActive ? "text-ink" : "text-muted"
                     }`}
                   >
@@ -114,7 +117,7 @@ export function Nav() {
               <a
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="block py-4 text-2xl font-medium text-ink"
+                className="display block py-4 text-3xl font-bold text-ink"
               >
                 {item.label}
               </a>
