@@ -12,7 +12,7 @@ Software developer in the Chicago area, mostly in C# and .NET. I build full-stac
 
 ## Projects
 
-**[KnowledgeMarket](https://github.com/NoahStarkenburg/KnowledgeMarket)** is a full-stack course marketplace: a .NET 9 API with a React 19 front end, Stripe payments via webhooks, JWT auth in HttpOnly cookies with CSRF protection, Postgres full-text search, and S3-compatible storage. Tested with xUnit, Vitest, and Playwright.
+**[KnowledgeMarket](https://github.com/NoahStarkenburg/knowledge-market)** is a full-stack course marketplace, [live on Azure](https://knowledgemarket-bbedacandbcbajbu.z01.azurefd.net): a .NET 9 API with an Angular front end over SQL Server, Stripe payments via signed webhooks, JWT auth in HttpOnly cookies with CSRF protection, and infrastructure in Terraform. Tested with xUnit, Testcontainers and Vitest. It's my long-running portfolio project, where I build whatever I'm learning next.
 
 **[pulse-chat](https://github.com/NoahStarkenburg/pulse-chat)** is a multi-room chat system in Go, built to learn distributed systems hands-on. WebSockets, session auth, and Postgres message history work today; Redis Pub/Sub scaling is next.
 
