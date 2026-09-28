@@ -12,7 +12,7 @@ export function CopyEmail() {
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     } catch {
-      /* clipboard unavailable — the mailto link still works */
+      /* clipboard unavailable; the mailto link still works */
     }
   }
 

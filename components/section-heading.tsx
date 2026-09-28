@@ -3,7 +3,7 @@ import { Reveal } from "@/components/reveal";
 /**
  * Section masthead: a hairline rule carrying a mono "coordinate" (index + label)
  * on the left and an optional annotation on the right, then the display title.
- * The numbering is wayfinding — it matches the nav order, not decoration.
+ * The numbering is wayfinding: it matches the nav order, not decoration.
  */
 export function SectionHeading({
   index,

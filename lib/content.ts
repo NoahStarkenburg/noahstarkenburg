@@ -1,5 +1,5 @@
 /**
- * SITE CONTENT — edit this file to update the whole site.
+ * SITE CONTENT: edit this file to update the whole site.
  *
  * Everything visible is driven from here, so you never have to touch the
  * components to change copy, add a project, or fix a detail.

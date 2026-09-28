@@ -15,14 +15,14 @@
   --faint: #8b8b93; /* labels / metadata */
   --line: #e7e4dc; /* subtle hairlines */
   --line-strong: #d6d2c8;
-  --accent: #2a43d4; /* cobalt — the one accent (swap to recolor) */
+  --accent: #2a43d4; /* cobalt: the one accent (swap to recolor) */
   --accent-soft: #e9ecfb;
   --accent-glow: rgba(42, 67, 212, 0.12);
   --accent-ring: rgba(42, 67, 212, 0.45);
   --radius: 10px;
 }
 
-/* Dark theme — same system inverted. Warm off-white ink, periwinkle accent. */
+/* Dark theme: same system inverted. Warm off-white ink, periwinkle accent. */
 :root[data-theme="dark"] {
   --paper: #0e0e11;
   --surface: #17171b;
@@ -164,7 +164,7 @@ h3.display {
   ---- FLAIR (pazazz) ----
   Optional polish, gated behind data-flair="on" on <html>. Flip to "off" in
   app/layout.tsx to fall back to a fully plain version. The accent stays
-  disciplined on purpose: indices, hairlines, and indicators only — never the
+  disciplined on purpose: indices, hairlines, and indicators only, never the
   primary buttons (they stay ink), so the page never reads "colorful".
 */
 [data-flair="on"] .accent-text {
