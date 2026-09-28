@@ -166,24 +166,23 @@ export const projects: Project[] = [
     title: "KnowledgeMarket",
     tagline: "Full-stack course marketplace",
     description:
-      "A full-stack course marketplace where instructors publish paid courses and learners buy and access them. A React single-page app on an ASP.NET Core API with 70+ endpoints, Stripe payments with webhook-driven fulfillment, JWT auth in HttpOnly cookies with CSRF protection, full-text search, and a Dockerized CI/CD pipeline. Currently being deployed to Azure for a live demo.",
+      "A full-stack course marketplace where creators publish courses and learners buy and take them. An Angular single-page app on an ASP.NET Core API with 70+ endpoints over SQL Server, Stripe payments with signed webhooks and idempotency keys, JWT auth in HttpOnly cookies with CSRF protection, and integration tests against a real SQL Server container. Live on Azure, with all of its infrastructure in Terraform. My long-running portfolio project, where I build whatever I'm learning next.",
     status: "Shipped",
     year: "2025",
     featured: true,
     stack: [
       "ASP.NET Core",
-      "React",
+      "Angular",
       "TypeScript",
-      "PostgreSQL",
+      "SQL Server",
       "Stripe",
-      "JWT",
-      "Docker",
       "Azure",
+      "Terraform",
+      "Docker",
     ],
     links: [
-      // Deploying it? Add the URL here and a "Live demo" button appears automatically:
-      // { label: "Live demo", href: "https://your-demo-url" },
-      { label: "Repository", href: "https://github.com/NoahStarkenburg/KnowledgeMarket" },
+      { label: "Live demo", href: "https://knowledgemarket-bbedacandbcbajbu.z01.azurefd.net" },
+      { label: "Repository", href: "https://github.com/NoahStarkenburg/knowledge-market" },
     ],
     images: [
       "/projects/knowledgemarket/01-landing.png",
