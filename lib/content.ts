@@ -3,9 +3,6 @@
  *
  * Everything visible is driven from here, so you never have to touch the
  * components to change copy, add a project, or fix a detail.
- *
- * Search for "TODO" to find spots that need your input (repo links to confirm
- * or push, the resume PDF).
  */
 
 export const profile = {
@@ -18,7 +15,6 @@ export const profile = {
   location: "Hoffman Estates, IL",
   availability: "Open to software engineer and developer roles",
   email: "noahstarkenburg@gmail.com",
-  // 🔴 TODO: drop your resume PDF into /public and keep this filename in sync.
   resume: "/Noah-Starkenburg-Resume.pdf",
   photo: "/noah.jpg",
   socials: {
@@ -43,8 +39,7 @@ export const facts: { label: string; value: string }[] = [
 export const highlights: { label: string; href?: string }[] = [
   { label: "AWS Certified Cloud Practitioner" },
   { label: "3rd place · AWS Cloudathon" },
-  // 🔴 TODO: add the Kong repo or your PR URL to make this clickable.
-  { label: "Open-source contributor · Kong (3.1k★ Go)" },
+  { label: "Merged open-source fixes · Kong, go-git, MikroORM", href: "https://github.com/NoahStarkenburg" },
 ];
 
 /** Technologies scrolled in the marquee band. Curated for relevance. */
@@ -159,8 +154,6 @@ export type Project = {
   images?: string[];
 };
 
-// 🔴 TODO: confirm each repo below is pushed and public on your GitHub.
-// Any that aren't will 404 until you push them.
 export const projects: Project[] = [
   {
     title: "KnowledgeMarket",
@@ -202,20 +195,8 @@ export const projects: Project[] = [
       "A multi-room chat system implementing WebSocket fan-out, Redis Pub/Sub for cross-instance delivery, Redis-backed presence and rate limiting, and Postgres persistence. Each layer is built by hand to understand how real-time distributed systems actually work at the wire level, rather than gluing frameworks together. Session auth, graceful shutdown, ADRs, and CI throughout.",
     status: "In progress",
     year: "2026",
-    stack: ["Go", "WebSockets", "Redis", "RabbitMQ", "PostgreSQL", "Distributed Systems"],
+    stack: ["Go", "WebSockets", "Redis", "PostgreSQL", "Distributed Systems"],
     links: [{ label: "Repository", href: "https://github.com/NoahStarkenburg/pulse-chat" }],
-    images: [],
-  },
-  {
-    title: "Conduit",
-    tagline: "API gateway in Go",
-    description:
-      "A self-hostable API gateway in Go that sits in front of LLM providers. Adds response caching, multi-provider routing with circuit breakers, streaming passthrough, per-tenant rate limiting, and Prometheus and OpenTelemetry observability. Ships as a single binary and Docker image.",
-    status: "In progress",
-    year: "2026",
-    stack: ["Go", "Redis", "gRPC", "OpenTelemetry", "Prometheus", "Docker"],
-    // 🔴 TODO: add the repo link once it's public.
-    links: [],
     images: [],
   },
   {

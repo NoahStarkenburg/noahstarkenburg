@@ -31,7 +31,7 @@ const title = `${profile.name} | ${profile.role}`;
 const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(!t){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();`;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://noahstarkenburg.dev"),
+  metadataBase: new URL("https://noahstarkenburg.vercel.app"),
   title: {
     default: title,
     template: `%s | ${profile.name}`,
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     type: "website",
     title,
     description: profile.hook,
-    url: "https://noahstarkenburg.dev",
+    url: "https://noahstarkenburg.vercel.app",
     siteName: profile.name,
   },
   robots: { index: true, follow: true },

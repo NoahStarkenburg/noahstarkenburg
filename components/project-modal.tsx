@@ -8,11 +8,11 @@ import { ChevronLeft, ChevronRight, GitHub, Maximize, X } from "@/components/ico
 
 function hostLabel(project: Project) {
   const link = project.links.find((l) => l.href.startsWith("http"));
-  if (!link) return "noahstarkenburg.dev";
+  if (!link) return "noahstarkenburg.vercel.app";
   try {
     return new URL(link.href).host.replace(/^www\./, "");
   } catch {
-    return "noahstarkenburg.dev";
+    return "noahstarkenburg.vercel.app";
   }
 }
 

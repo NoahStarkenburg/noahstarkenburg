@@ -43,7 +43,7 @@ export default function OpengraphImage() {
                 display: "flex",
               }}
             />
-            <div style={{ fontSize: "28px", color: MUTED }}>noahstarkenburg.dev</div>
+            <div style={{ fontSize: "28px", color: MUTED }}>noahstarkenburg.vercel.app</div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "12px", fontSize: "24px", color: MUTED }}>
             <div style={{ width: "12px", height: "12px", borderRadius: "6px", background: ACCENT, display: "flex" }} />
